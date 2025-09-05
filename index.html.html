@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volticle - Electric Two-Wheeler Repair</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Dark background */
+            color: #e2e8f0; /* Light text */
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 1s ease;
+        }
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+        .loading-spinner::before,
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            animation: spark-pulse 1.5s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .loading-spinner::before {
+            width: 100%;
+            height: 100%;
+            border-color: #00bfff transparent transparent transparent; /* Electric blue spark */
+        }
+        .loading-spinner::after {
+            width: 80%;
+            height: 80%;
+            border-color: transparent #e2e8f0 transparent transparent; /* Light gray spark */
+            animation-delay: 0.75s;
+        }
+        @keyframes spark-pulse {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.0) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .animated-background {
+            background-image: url('BG1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .animated-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7); /* Dark overlay */
+            backdrop-filter: blur(2px);
+        }
+        .dark-section {
+            background-color: #1f2937;
+            color: #f0fdf4;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-sm shadow-lg border-b border-gray-700">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="img/LW.png" alt="Volticle Logo" class="h-8 md:h-10">
+                <h1 class="text-xl md:text-2xl font-bold text-white"> </h1>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-slate-300">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#services" class="hover:text-sky-400 transition-colors">Services</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/90 backdrop-blur-sm py-4">
+            <a href="#about" class="block px-4 py-2 text-white hover:bg-slate-800">About</a>
+            <a href="#services" class="block px-4 py-2 text-white hover:bg-slate-800">Services</a>
+            <a href="#contact" class="block px-4 py-2 text-white hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center animated-background pt-16">
+            <div class="relative z-10 text-center px-4">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    Your Trusted Partner in Electric Two-Wheeler Repair
+                </h2>
+                <p class="text-xl md:text-2xl text-slate-300 font-light mb-8">
+                    Specializing in Ather, OLA, Simple One &amp; more.
+                </p>
+                <a href="#contact" class="bg-sky-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-sky-600 transition-transform transform hover:scale-105">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-900 text-white">
+            <div class="container mx-auto px-4 md:flex items-center justify-between">
+                <div class="md:w-1/2 md:pr-10 mb-8 md:mb-0">
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">About Volticle</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        Our story at Volticle, a premier Electric Two-Wheeler Repair Centre, started on July 16, 2019. On that day, we took on a challenge and became the first team in Kerala to successfully repair an Ather 450 without any external support. This achievement marked the beginning of our mission to become specialists in electric vehicle maintenance.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Today, our expertise extends to a wide range of electric two-wheelers, including OLA, Simple One, and Hero Vida models. We are committed to delivering work that meets the highest factory standards. We also believe in complete transparency, allowing you to witness the repair process on your vehicle firsthand.                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="img/ather og.png" alt="Volticle Workshop" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-slate-950 text-slate-200">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-12">Our Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-xl">
+                <ul class="text-left text-gray-400 space-y-2">
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Brake Pad</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Belt Change</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Belt Tension</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>MC Kit Repair</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-lg shadow-xl">
+                <ul class="text-left text-gray-400 space-y-2">
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Caliper Repair</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Cone Set Fix</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Bearing Fix</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Fork Repair</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-lg shadow-xl">
+                <ul class="text-left text-gray-400 space-y-2">
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Wheel Alignment</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Free Checkup</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Body Panel Fix</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.53 7.184A1 1 0 0111 8h-1a1 1 0 100-2h2a1 1 0 110 2h-1a1 1 0 100 2h1a1 1 0 110 2h-2a1 1 0 110-2h1a1 1 0 100-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Electrical Repair</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-slate-950 text-slate-200">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-8">Get in Touch</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-12">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-4.42 0-8 3.58-8 8 0 4.42 8 14 8 14s8-9.58 8-14c0-4.42-3.58-8-8-8zm0 11.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div class="text-left">
+                            <p class="text-lg font-semibold text-white">Location</p>
+                            <p class="text-slate-400">Padapparamba, Malappuram, Kerala</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <div class="text-left">
+                            <p class="text-lg font-semibold text-white">Email</p>
+                            <p class="text-slate-400">volticlempm@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div class="text-left">
+                            <p class="text-lg font-semibold text-white">Phone</p>
+                            <a href="tel:+919074243208" class="text-slate-400 block">+91 9074243208</a>
+                            <a href="tel:+917558072977" class="text-slate-400 block">+91 7558072977</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 w-full max-w-4xl mx-auto">
+                    <h4 class="text-2xl font-bold text-white mb-4">Find Us on the Map</h4>
+                    <div class="rounded-lg overflow-hidden border border-gray-700">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.7329241804246!2d76.11360527414963!3d10.972599155700814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7cba411c8a173%3A0x61f0281ebc058f43!2sVolticle%20Electric%20Two%20Wheeler%20Repair%20Centre!5e0!3m2!1sen!2sin!4v1715423851086!5m2!1sen!2sin"
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-6 text-center text-gray-500">
+        <p>&copy; 2024 Volticle. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('menu-button');
+
+            // Hide loading overlay after a short delay
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 1000);
+            }, 2000); // 2-second delay to show animation
+
+            // Toggle mobile menu
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
